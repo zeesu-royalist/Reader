@@ -1,0 +1,395 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    /* Navbar with color matching your image */
+    nav {
+        width: 100%;
+        background: linear-gradient(90deg, #111 0%, #222 50%, #111 100%);
+        color: #ffffff;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        border-bottom: 2px solid #ff9800;
+        /* subtle accent like the lights in image */
+    }
+
+    nav .logo {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #ff9800;
+        /* bright accent for logo to match neon lights */
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+    }
+
+    nav ul li a {
+        color: #ffffff;
+        text-decoration: none;
+        transition: all 0.3s;
+        font-weight: 500;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    nav ul li a:hover {
+        color: #ff4c4c;
+        /* matches red lights in the image */
+        text-shadow: 1px 1px 5px #ff4c4c;
+    }
+
+    nav .menu-toggle {
+        display: none;
+        font-size: 1.5em;
+        cursor: pointer;
+        color: #ff9800;
+    }
+
+
+    /* Layout */
+    .container {
+        display: flex;
+        flex: 1;
+    }
+
+    /* Sidebar with background image */
+    aside {
+        width: 250px;
+        padding: 20px;
+        transition: transform 0.3s ease;
+        background: url('side.jpg') no-repeat center center;
+        background-size: cover;
+        position: relative;
+        color: white;
+        /* fallback text color */
+    }
+
+    /* Dark overlay to improve readability */
+    aside::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        /* stronger overlay */
+        z-index: 0;
+    }
+
+    /* Sidebar content above overlay */
+    aside ul {
+        position: relative;
+        z-index: 1;
+        list-style: none;
+        padding: 0;
+    }
+
+    /* Links styling */
+    aside ul li a {
+        display: block;
+        padding: 10px 15px;
+        margin: 5px 0;
+        background-color: rgba(255, 255, 255, 0.1);
+        /* slightly transparent background */
+        border-radius: 5px;
+        text-decoration: none;
+        color: white;
+        font-weight: 500;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        /* makes text stand out */
+        transition: all 0.3s ease;
+    }
+
+    /* Hover effect */
+    aside ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #ff9800;
+    }
+
+
+
+    /* Main content with background image */
+    main {
+        flex: 1;
+        padding: 20px;  
+        background: url('bg.jpg') no-repeat center center;
+        background-size: cover;
+        color: white;
+        /* text color */
+        min-height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        position: relative;
+        /* added to make overlay work correctly */
+    }
+
+    /* Overlay */
+    main::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        /* slightly lighter overlay */
+        z-index: 0;
+    }
+
+    /* Text above overlay */
+    main>* {
+        position: relative;
+        z-index: 1;
+        color: white;
+        /* ensures text is visible */
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        /* optional: adds highlight effect */
+    }
+
+
+    /* Footer */
+    footer {
+        background-color: #333;
+        color: white;
+        padding: 30px 20px;
+        border-bottom: 10px solid #ff9800;
+        
+    }
+
+    footer .footer-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    footer .footer-section {
+        flex: 1;
+        min-width: 200px;
+        margin: 10px 0;
+    }
+
+    footer h3 {
+        margin-bottom: 10px;
+        color: #ff9800;
+    }
+
+    footer ul {
+        font-size: 10px;
+        list-style: none;
+    }
+
+    footer ul li a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        margin: 5px 0;
+    }
+
+    footer ul li a:hover {
+        color: #ff9800;
+    }
+
+    footer .social-icons a {
+        margin-right: 10px;
+        color: white;
+        text-decoration: none;
+        font-size: 1.2em;
+        font-size: 10px;
+    }
+
+    footer .social-icons a:hover {
+        color: #ff9800;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        nav ul {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            width: 150px;
+            z-index: 10;
+        }
+
+        nav ul.active {
+            display: flex;
+        }
+
+        nav .menu-toggle {
+            display: block;
+        }
+
+        .container {
+            flex-direction: column;
+        }
+
+        aside {
+            position: absolute;
+            top: 60px;
+            left: -260px;
+            width: 250px;
+            height: calc(100vh - 60px);
+            background-color: #f4f4f4;
+            z-index: 9;
+        }
+
+        aside.active {
+            transform: translateX(260px);
+        }
+    }
+
+
+/* ----------------- HERO SECTION ----------------- */
+.hero {
+    width: 100%;
+    min-height: 90vh;
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(5px) saturate(180%);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    padding: 20px; /* add breathing room */
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(28px, 5vw, 45px); /* auto scales with screen */
+    font-weight: 500;
+    margin-top: -20px;
+    margin-bottom: 40px;
+}
+.hero h1 span {
+    color: #ff4c4c;
+}
+
+/* Textarea */
+textarea {
+    width: 100%;             /* use full width inside parent */
+    max-width: 600px;        /* don’t exceed on large screens */
+    height: 250px;
+    background: #847b3d30;
+    color: #fff;
+    font-size: 15px;
+    outline: 0;
+    padding: 20px;
+    border-radius: 10px;
+    resize: none;
+    margin-bottom: 30px;
+}
+
+textarea::placeholder {
+    font-size: 16px;
+    color: #efececfe;
+}
+
+/* Row (button + select container) */
+.row {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap; /* allows stacking on mobile */
+    justify-content: center;
+}
+
+/* Button */
+button {
+    background: hsla(36, 74%, 38%, 0.687);
+    color: #FFCCCB;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); 
+    font-size: 16px;
+    padding: 10px 25px;
+    border-radius: 10px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+button img {
+    width: 16px;
+    margin-right: 5px;
+}
+
+/* Select */
+select {
+    flex: 1;
+    min-width: 150px;
+    color: #fff;
+    background: hsla(36, 74%, 38%, 0.574);
+    height: 40px;
+    padding: 0 20px;
+    outline: 0;
+    border: 0;
+    border-radius: 35px;
+    appearance: none;
+    background-image: url(d2.png);
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-position: right 15px center;
+}
+
+/* ----------------- RESPONSIVE FIXES ----------------- */
+@media (max-width: 768px) {
+    textarea {
+        height: 200px;
+        font-size: 14px;
+    }
+    .row {
+        flex-direction: column; 
+        align-items: stretch;
+    }
+    button {
+        width: 100%;
+    }
+    select {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 24px;
+    }
+    textarea {
+        height: 180px;
+        padding: 15px;
+    }
+    button {
+        font-size: 14px;
+        padding: 8px 20px;
+    }
+}
+
+}
